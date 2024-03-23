@@ -19,8 +19,15 @@ public class SupplierEntity {
     private String cnpj;
     @Column
     private String name;
-    @OneToOne
-    @JoinColumn(name = "address_id")
-    private AddressEntity address;
-    private Integer contact_number;
+    @Column
+    private Integer number;
+    @Column
+    private String cep;
+    @Column
+    private String street;
+    @Column
+    private String city;
+    @Column
+    private String state;
+
 }
