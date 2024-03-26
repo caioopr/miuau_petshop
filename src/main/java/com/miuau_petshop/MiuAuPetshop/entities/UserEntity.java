@@ -30,5 +30,4 @@ public class UserEntity {
     private String city;
     @Column
     private String state;
-
 }
