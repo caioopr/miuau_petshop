@@ -27,4 +27,14 @@ public class SuppliersService {
         return suppliersRepository.findAll();
     }
 
+    public void update(Integer id, SupplierEntity updatedSupplier){
+        suppliersRepository.findById(id).map( employee ->{
+                updatedSupplier.setId(employee.getId());
+                suppliersRepository.save(updatedSupplier);
+                return updatedSupplier;
+            }
+        ).orElseThrow(
+                () -> new RuntimeException("Supplier not found")
+        );
+    }
 }

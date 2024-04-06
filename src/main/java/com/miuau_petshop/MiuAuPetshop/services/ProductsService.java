@@ -27,7 +27,6 @@ public class ProductsService {
         return productsRepository.findAll();
     }
 
-
     public void update(Integer id, ProductEntity updatedProduct){
         productsRepository
                 .findById(id)
@@ -36,7 +35,7 @@ public class ProductsService {
                     productsRepository.save(updatedProduct);
                     return updatedProduct;
                 }).orElseThrow( () ->
-                        new Error());
+                        new RuntimeException("Product not found!"));
     }
 
     public void delete(Integer id){
@@ -46,7 +45,7 @@ public class ProductsService {
                     productsRepository.delete(product);
                     return Void.TYPE;
                 }).orElseThrow( () ->
-                        new Error());
+                        new RuntimeException("Product not found!"));
     }
 
 }

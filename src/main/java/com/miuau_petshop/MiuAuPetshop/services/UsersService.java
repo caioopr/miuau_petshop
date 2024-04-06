@@ -23,4 +23,24 @@ public class UsersService {
     public List<UserEntity> getUsers(){
         return usersRepository.findAll();
     }
+
+    public UserEntity update(Integer id, UserEntity updatedUser){
+        return usersRepository.findById(id).map(
+                user -> {
+                    updatedUser.setId(user.getId());
+                    usersRepository.save(updatedUser);
+                    return updatedUser;
+                }
+        ).orElseThrow(RuntimeException::new);
+
+    }
+
+    public void delete(Integer id){
+        usersRepository.findById(id).map(
+                user -> {
+                    usersRepository.delete(user);
+                    return Void.TYPE;
+                }
+        ).orElseThrow(RuntimeException::new);
+    }
 }

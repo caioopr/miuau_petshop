@@ -1,6 +1,7 @@
 package com.miuau_petshop.MiuAuPetshop.controllers;
 
 import com.miuau_petshop.MiuAuPetshop.entities.EmployeeEntity;
+import com.miuau_petshop.MiuAuPetshop.entities.ProductEntity;
 import com.miuau_petshop.MiuAuPetshop.services.EmployeesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,5 +25,18 @@ public class EmployeesController {
     @ResponseStatus(HttpStatus.OK)
     public List<EmployeeEntity> getAll(){
         return employeesService.getEmployees();
+    }
+
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update( @PathVariable Integer id,
+                        @RequestBody EmployeeEntity employee ){
+        employeesService.update(id,employee);
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id){
+        employeesService.delete(id);
     }
 }

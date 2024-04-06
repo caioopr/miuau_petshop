@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class OrdersService {
+
+    // repositories dependency injection
     @Autowired
     final private OrdersRepository ordersRepository;
     @Autowired
@@ -88,7 +90,7 @@ public class OrdersService {
                     ProductEntity product = productsRepository
                             .findById(orderItemDTO.productID())
                             .orElseThrow(
-                                    () -> new Error());
+                                    () -> new RuntimeException("Product not found!"));
 
                     OrderItemsEntity orderItem = new OrderItemsEntity(null ,order, product, orderItemDTO.quantity());
                     return orderItem;

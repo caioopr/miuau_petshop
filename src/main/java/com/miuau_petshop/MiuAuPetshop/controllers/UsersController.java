@@ -27,4 +27,18 @@ public class UsersController {
     public List<UserEntity> getAll(){
         return usersService.getUsers();
     }
+
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public UserEntity update( @PathVariable Integer id,
+                        @RequestBody UserEntity user ){
+        return usersService.update(id,user);
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id){
+        usersService.delete(id);
+    }
+
 }

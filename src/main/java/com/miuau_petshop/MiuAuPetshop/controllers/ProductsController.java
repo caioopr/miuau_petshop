@@ -2,7 +2,6 @@ package com.miuau_petshop.MiuAuPetshop.controllers;
 
 
 import com.miuau_petshop.MiuAuPetshop.entities.ProductEntity;
-import com.miuau_petshop.MiuAuPetshop.entities.UserEntity;
 import com.miuau_petshop.MiuAuPetshop.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +42,7 @@ public class ProductsController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id){
-        return;
+        productsService.delete(id);
     }
 
 }
