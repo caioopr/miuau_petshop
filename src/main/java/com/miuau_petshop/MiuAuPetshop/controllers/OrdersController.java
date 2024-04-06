@@ -1,5 +1,6 @@
 package com.miuau_petshop.MiuAuPetshop.controllers;
 
+import com.miuau_petshop.MiuAuPetshop.dtos.OrderDTO;
 import com.miuau_petshop.MiuAuPetshop.entities.OrderEntity;
 
 import com.miuau_petshop.MiuAuPetshop.services.OrdersService;
@@ -22,7 +23,7 @@ public class OrdersController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderEntity create(@RequestBody OrderEntity order ){
+    public OrderEntity create(@RequestBody OrderDTO order ){
         return ordersService.save(order);
     }
 

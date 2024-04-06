@@ -17,11 +17,6 @@ public class OrderItemsService {
         this.orderItemsRepository = orderItemsRepository;
     }
 
-    public OrderItemsEntity save(OrderItemsEntity orderItems){
-        orderItemsRepository.save(orderItems);
-        return orderItems;
-    }
-
     public List<OrderItemsEntity> getOrderItems(){
         return orderItemsRepository.findAll();
     }

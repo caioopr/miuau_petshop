@@ -15,10 +15,10 @@ public class OrderItemsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private OrderEntity order;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private ProductEntity product;
     private Integer quantity;

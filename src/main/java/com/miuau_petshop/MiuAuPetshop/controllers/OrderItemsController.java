@@ -18,12 +18,6 @@ public class OrderItemsController {
         this.orderItemsService = orderItemsService;
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public OrderItemsEntity create(@RequestBody OrderItemsEntity orderItems){
-        return orderItemsService.save(orderItems);
-    }
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<OrderItemsEntity> getAll(){

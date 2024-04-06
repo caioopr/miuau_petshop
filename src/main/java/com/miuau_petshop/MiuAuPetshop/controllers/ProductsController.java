@@ -33,5 +33,18 @@ public class ProductsController {
         return productsService.getProducts();
     }
 
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update( @PathVariable Integer id,
+                        @RequestBody ProductEntity product ){
+        productsService.update(id,product);
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id){
+        return;
+    }
+
 }
 
