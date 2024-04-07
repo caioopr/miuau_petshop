@@ -5,6 +5,7 @@ import com.miuau_petshop.MiuAuPetshop.entities.OrderEntity;
 
 import com.miuau_petshop.MiuAuPetshop.services.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,5 +32,17 @@ public class OrdersController {
     @ResponseStatus(HttpStatus.OK)
     public List<OrderEntity> getAll(){
         return ordersService.getOrders();
+    }
+
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public OrderEntity update(@PathVariable("id") Integer id, @RequestBody OrderDTO order){
+        return ordersService.update(id,order);
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable("id") Integer id){
+        ordersService.delete(id);
     }
 }
