@@ -19,12 +19,12 @@ public class OrderEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @JsonIgnore
-    @ManyToOne ( fetch = FetchType.LAZY)
+    //@JsonIgnore
+    @ManyToOne ( fetch = FetchType.EAGER)
     @JoinColumn(name = "seller_id")
     private EmployeeEntity seller;
-    @JsonIgnore
-    @ManyToOne( fetch = FetchType.LAZY)
+    //@JsonIgnore
+    @ManyToOne( fetch = FetchType.EAGER)
     @JoinColumn(name = "buyer_id")
     private UserEntity user;
     private Double commission;

@@ -1,5 +1,6 @@
 package com.miuau_petshop.MiuAuPetshop.controllers;
 
+import com.miuau_petshop.MiuAuPetshop.dtos.EmployeeDTO;
 import com.miuau_petshop.MiuAuPetshop.entities.EmployeeEntity;
 import com.miuau_petshop.MiuAuPetshop.entities.ProductEntity;
 import com.miuau_petshop.MiuAuPetshop.services.EmployeesService;
@@ -17,7 +18,7 @@ public class EmployeesController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public EmployeeEntity create(@RequestBody EmployeeEntity employee ){
+    public EmployeeEntity create(@RequestBody EmployeeDTO employee ){
         return employeesService.save(employee);
     }
 
