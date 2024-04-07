@@ -1,24 +1,39 @@
 package com.miuau_petshop.MiuAuPetshop.services;
 
+import com.miuau_petshop.MiuAuPetshop.dtos.ProductDTO;
 import com.miuau_petshop.MiuAuPetshop.entities.ProductEntity;
+import com.miuau_petshop.MiuAuPetshop.entities.SupplierEntity;
 import com.miuau_petshop.MiuAuPetshop.repositories.ProductsRepository;
+import com.miuau_petshop.MiuAuPetshop.repositories.SuppliersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class ProductsService {
     @Autowired
     final private ProductsRepository productsRepository;
+    @Autowired
+    final private SuppliersRepository suppliersRepository;
 
-    ProductsService(ProductsRepository productsRepository){
+    ProductsService(ProductsRepository productsRepository, SuppliersRepository suppliersRepository){
         this.productsRepository = productsRepository;
+        this.suppliersRepository = suppliersRepository;
     }
 
-    public ProductEntity save(ProductEntity product){
+    public ProductEntity save(ProductDTO productDTO){
+
+        SupplierEntity supplier = suppliersRepository
+                .findById(productDTO.supplierID())
+                .orElseThrow(() -> new RuntimeException("Supplier not found"));
+
+        ProductEntity product = new ProductEntity();
+        product.setName(productDTO.name());
+        product.setPrice(productDTO.price());
+        product.setSupplier(supplier);
+
         productsRepository.save(product);
         return product;
     }

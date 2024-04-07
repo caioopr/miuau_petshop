@@ -1,6 +1,7 @@
 package com.miuau_petshop.MiuAuPetshop.controllers;
 
 
+import com.miuau_petshop.MiuAuPetshop.dtos.ProductDTO;
 import com.miuau_petshop.MiuAuPetshop.entities.ProductEntity;
 import com.miuau_petshop.MiuAuPetshop.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class ProductsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductEntity create(@RequestBody ProductEntity product ){
+    public ProductEntity create(@RequestBody ProductDTO product ){
         return productsService.save(product);
     }
 
