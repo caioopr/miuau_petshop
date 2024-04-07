@@ -5,6 +5,7 @@ import com.miuau_petshop.MiuAuPetshop.entities.ProductEntity;
 import com.miuau_petshop.MiuAuPetshop.entities.SupplierEntity;
 import com.miuau_petshop.MiuAuPetshop.repositories.ProductsRepository;
 import com.miuau_petshop.MiuAuPetshop.repositories.SuppliersRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +43,18 @@ public class ProductsService {
         return productsRepository.findAll();
     }
 
-    public void update(Integer id, ProductEntity updatedProduct){
+    @Transactional
+    public void update(Integer id, ProductDTO productDTO){
+
+        SupplierEntity supplier = suppliersRepository
+                .findById(productDTO.supplierID())
+                .orElseThrow(() -> new RuntimeException("Supplier not found"));
+
+        ProductEntity updatedProduct = new ProductEntity();
+        updatedProduct.setSupplier(supplier);
+        updatedProduct.setName(productDTO.name());
+        updatedProduct.setPrice(productDTO.price());
+
         productsRepository
                 .findById(id)
                 .map( productItem -> {

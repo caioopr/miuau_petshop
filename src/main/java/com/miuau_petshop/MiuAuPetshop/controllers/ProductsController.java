@@ -36,7 +36,7 @@ public class ProductsController {
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update( @PathVariable Integer id,
-                        @RequestBody ProductEntity product ){
+                        @RequestBody ProductDTO product ){
         productsService.update(id,product);
     }
 
