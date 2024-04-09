@@ -18,19 +18,19 @@ public class SupplierEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column
+    @Column(length=18,nullable=false, unique = true)
     private String cnpj;
-    @Column
+    @Column(length=100,nullable=false)
     private String name;
     @Column
     private Integer number;
-    @Column
+    @Column(length=100,nullable=false)
     private String cep;
-    @Column
+    @Column(length=100,nullable=false)
     private String street;
-    @Column
+    @Column(length=100,nullable=false)
     private String city;
-    @Column
+    @Column(length=100,nullable=false)
     private String state;
 
 }

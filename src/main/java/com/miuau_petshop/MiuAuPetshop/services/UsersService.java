@@ -17,6 +17,10 @@ public class UsersService {
     }
 
     public UserEntity save(UserEntity user){
+        if(usersRepository.existsByCpf(user.getCpf())){
+            throw new RuntimeException("User already exists");
+        }
+
         usersRepository.save(user);
         return user;
     }

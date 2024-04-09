@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UsersRepository extends JpaRepository<UserEntity, Integer> {
+    boolean existsByCpf(String cpf);
 }
 

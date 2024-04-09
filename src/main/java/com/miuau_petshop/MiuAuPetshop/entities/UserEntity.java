@@ -17,20 +17,20 @@ public class UserEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column
+    @Column(length=14, nullable=false, unique = true)
     private String cpf;
-    @Column
+    @Column(length=100,nullable=false)
     private String name;
-    @Column
+    @Column(length=100,nullable=false)
     private String lastname;
     @Column
     private Integer number;
-    @Column
+    @Column(length=9,nullable=false)
     private String cep;
-    @Column
+    @Column(length=100,nullable=false)
     private String street;
-    @Column
+    @Column(length=100,nullable=false)
     private String city;
-    @Column
+    @Column(length=100,nullable=false)
     private String state;
 }

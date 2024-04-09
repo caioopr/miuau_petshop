@@ -16,7 +16,9 @@ public class ProductEntity implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(length=100,nullable=false)
     private String name;
+    @Column
     private Double price;
     @ManyToOne
     @JoinColumn(name = "supplier_id")
