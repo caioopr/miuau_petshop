@@ -1,11 +1,10 @@
-# Atividade 4 - Parte 2
 ## Objetivo 
 Criar API Web que efetua o CRUD (insert,delete,
 update e leitura) de três tabelas do banco de dados, sendo duas tabelas geradas a
 partir de entidades e uma tabela gerada a partir de um relacionamento ou
 agregação.
 
-**Tabelas Escolhidas**
+**Tabelas Selecionadas**
 - Pedidos (Orders, gerada por entidade) 
 - Itens dos Pedidos (OrderItems, gerada por agregação)
 - Produtos (Products, gerada por entidade)
